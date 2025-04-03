@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Angular</title>
+</head>
+<body class="main--container">
+    <header class="cabecalho">
+        <nav>
+            <img src="/ccb.png" class="logo">
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li>
+                    <div class="dropdown">
+                        <a href="#features">Recursos</a>
+                        <div class="dropdownmenu">
+                            <a [routerLink]="'/reservas'">Alocar Hóspede</a>
+                            <a href="#alocar_hospede">teste</a>
+                            <a href="#alocar_hospede">teste</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <div class="container-acoes">
+            <h1> Hospedes sem leito alocado: </h1>
+            @if (isSelected) {
+                <button class="alocate-button" [class.selected]="isSelected" (click)="abrirModal()">Alocar leito</button>
+            } @else {
+                <button class="alocate-button" [class.unselected]="isSelected" disabled>Alocar leito</button>
+            }
+        </div>
+        <div class="container-filtros">
+            <button class="filter-button" (click)="ordenar('idade')" [class.selected]="isOrdenadoIdade"><img src="/sort-down.png"> Idade</button>
+            <button class="filter-button" (click)="ordenar('tdm')" [class.selected]="isOrdenadoTempoMinisterio"><img src="/sort-down.png"> Tempo de ministério</button>
+            <button class="filter-button" (click)="ordenar('enfermidade')" [class.selected]="isOrdenadoEnfermidade"><img src="/sort-down.png"> Enfermidade</button>
+        </div>
+        <section class="consulta-box">
+            <div class="listagem-cards">
+                @for (reserva of reservas; track reserva) {
+                <div class="checkbox-div" (click)="toggleSelection(reserva.codigoReserva)">
+                    @if (selectedReserva == reserva.codigoReserva) {
+                    <div [class.selected]="isSelected" class="reserva-card">
+                        <p class="reserva-info"><strong>{{ reserva.nomeIrmao}}</strong></p>
+                        <p class="reserva-info">{{ reserva.ministerio}}</p>
+                        <p class="reserva-info">Idade: {{ reserva.idade }} anos</p>
+                        <p class="reserva-info">Tempo de ministério: {{ reserva.tempoDeMinisterio }} anos</p>
+                        <p class="reserva-info">Possui enfermidade?: {{ reserva.enfermidade == true ? 'Sim' : 'Não' }}</p>
+                    </div>
+                    } @else {
+                    <div [class.unselected]="isSelected" class="reserva-card">
+                        <p class="reserva-info"><strong>{{ reserva.nomeIrmao}}</strong></p>
+                        <p class="reserva-info">{{ reserva.ministerio}}</p>
+                        <p class="reserva-info">Idade: {{ reserva.idade }} anos</p>
+                        <p class="reserva-info">Tempo de ministério: {{ reserva.tempoDeMinisterio }} anos</p>
+                        <p class="reserva-info">Possui enfermidade?: {{ reserva.enfermidade == true ? 'Sim' : 'Não' }}</p>
+                    </div>
+                    }
+                </div>        
+                } @empty {
+                    <p>Não há servos de Deus para alocar.</p>
+                }
+            </div>
+        </section>
+    </main>
+    <app-alocar-leito [selectedReserva]="selectedReserva" (alocar)="onLeitoAlocado($event)"></app-alocar-leito>
+</body>
+</html>

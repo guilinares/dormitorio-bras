@@ -1,0 +1,33 @@
+<!-- Botão para abrir o modal -->
+<!-- Modal -->
+<div class="modal-overlay" [class.active]="modalAberto">
+  <div class="modal-content">
+    <button class="close-button" (click)="fecharModal()">✖</button>
+    <div class="header-modal">
+      <div>
+        <h2>Alocar Hóspede</h2>
+        <p>Leitos disponíveis:</p>
+      </div>
+      <button class="confirm-button" (click)="alocaHospede(codigoLeitoAlocado)" [class.selected]="leitoSelected">Confirmar</button>
+    </div>
+    <div class="modal-body">
+      @for (leito of leitos; track leito) {
+        <div class="checkbox-div" (click)="toggleSelectionLeito(leito.codigoLeito)">
+          @if (codigoLeitoAlocado == leito.codigoLeito) {
+            <div [class.selected]="leitoSelected" class="card-leito">
+              <p><strong>{{ leito.codigoLeito }}</strong></p>
+              <p>{{ leito.dormitorio }}</p>
+              <p>{{ leito.ocupado }}</p>
+            </div>
+          } @else {
+            <div [class.unselected]="leitoSelected" class="card-leito">
+              <p><strong>{{ leito.codigoLeito }}</strong></p>
+              <p>{{ leito.dormitorio }}</p>
+              <p>{{ leito.ocupado }}</p>
+            </div>  
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

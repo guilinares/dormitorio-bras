@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.cabecalho {
+    background-color: #B4B4B8;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    height: 13vh;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    margin-left: 5vw;
+    margin-right: 5vw; /* Ajusta a imagem sem distorcer */
+}
+
+nav {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #F2EFE5;
+    font-weight: bold;
+    transition: color 0.3s;
+    font-size: larger;
+}
+
+nav ul li a:hover {
+    color: #325883;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownmenu {
+    display: none;
+    position: absolute;
+    background-color: #E3E1D9;
+    list-style: none;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.dropdownmenu a {
+    color: #325883 !important; 
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownmenu a:hover {
+    background-color: #4a7bb3;
+    color: #E3E1D9 !important;
+}
+
+.dropdown:hover .dropdownmenu{
+    display: block;
+}
+
+.container {
+    margin-top: 5vh;
+    margin-left: 3vw;
+    flex: 1;
+}
+
+.container-acoes {
+    display: flex;
+    width: 93vw;
+    justify-content: space-between;
+}
+
+.consulta-box {
+    height: 60vh;
+    width: 93vw;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.consulta-button {
+    width: 10em;
+    height: 4em;
+    border-radius: 8px;
+}
+
+.listagem-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.checkbox-div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.reserva-card {
+    width: 320px;
+    height: auto;
+    background-color: #E3E1D9;
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    border: 2px solid #d8d4c8;
+    border-radius: 10px;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, height 0.5s ease-in-out;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.reserva-card.selected {
+    background-color: #908f8a;
+    border-color: #807e77;
+    transform: scale(1.10);
+}
+
+.reserva-card.unselected {
+    background-color: #e3e1d9;
+    border-color: #e3e1d9;
+}
+
+.reserva-card:hover {
+    transform: scale(1.10);
+}
+
+.reserva-info {
+    margin: 2px;
+}
+
+.alocate-button {
+    height: 50px;
+    width: 20vh;
+    background-color: #C1CFA1;
+    border-color: #C1CFA1;
+    border-radius: 10px;
+    font-size: large;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+    right: 60px;
+}
+
+.alocate-button.selected:hover {
+    transform: scale(1.10);
+}
+
+.alocate-button.selected {
+    background-color: #A5B68D;
+}
+
+.alocate-button.unselected {
+    background-color: #C1CFA1;
+}
+
+.container-filtros {
+    margin-left: 4vw;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 10px;
+    padding: 2px;
+    border: 2px solid #fada7a;
+    background-color: #fada7a2b;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.filter-button:hover {
+    background-color: #fada7a;
+}
+
+.filter-button.selected {
+    background-color: #fada7a;
+}
