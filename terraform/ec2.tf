@@ -108,7 +108,7 @@ data "template_file" "user_data" {
 }
 
 resource "aws_instance" "awsec2app" {
-  ami = "ami-0c614dee691cbbf37"
+  ami = "ami-092cd6a84ad570057"
   instance_type = var.instance_type
   user_data = data.template_file.user_data.rendered
   key_name      = var.key_name # Substitua pelo nome da sua chave SSH
