@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Angular</title>
+</head>
+<body class="main--container">
+    <app-cabecalho></app-cabecalho>
+    
+    <main class="container">
+        <div class="container-description">
+            <h1><strong>Reservas Efetuadas: </strong></h1>
+        </div>
+        <div class="listagem-cards">
+            @for (reserva of reservas; track reserva) {
+                <div class="checkbox-div">
+                    <div class="reserva-card">
+                        <p><strong>{{ reserva.nomeIrmao}}</strong></p>
+                        <p>{{ reserva.leito.numeroLeito }} - {{ reserva.leito.dormitorio }}</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </main>
+</body>
+</html>

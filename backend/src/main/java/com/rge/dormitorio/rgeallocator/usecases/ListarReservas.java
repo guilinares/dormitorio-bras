@@ -1,6 +1,7 @@
 package com.rge.dormitorio.rgeallocator.usecases;
 
 import com.rge.dormitorio.rgeallocator.adapters.controller.output.ReservasResponseData;
+import com.rge.dormitorio.rgeallocator.adapters.controller.output.ReservasResponseData.LeitoResponse;
 import com.rge.dormitorio.rgeallocator.adapters.controller.output.ReservasResponseData.ReservaResponse;
 import com.rge.dormitorio.rgeallocator.adapters.database.repository.ReservasRepository;
 import com.rge.dormitorio.rgeallocator.domain.IrmaoMinisterio;
@@ -28,6 +29,11 @@ public class ListarReservas {
                     .idade(irmaoMinisterio.getIdade().toString())
                     .enfermidade(irmaoMinisterio.isEnfermo())
                     .tempoDeMinisterio(irmaoMinisterio.getTempoDeMinisterio().toString())
+                    .alocado(reserva.getLeito() != null)
+                    .leito(reserva.getLeito() != null ? LeitoResponse.builder()
+                            .numeroLeito(reserva.getLeito().getNumeroLeito())
+                            .dormitorio(reserva.getLeito().getDormitorio().getNome())
+                            .build() : null)
                     .build();
             reservaResponseList.add(reservaResponse);
         }

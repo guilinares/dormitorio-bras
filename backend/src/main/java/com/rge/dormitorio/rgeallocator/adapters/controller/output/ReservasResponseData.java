@@ -26,5 +26,16 @@ public class ReservasResponseData {
         private String idade;
         private String tempoDeMinisterio;
         private boolean enfermidade;
+        private boolean alocado;
+        private LeitoResponse leito;
+    }
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class LeitoResponse {
+        private String numeroLeito;
+        private String dormitorio;
     }
 }

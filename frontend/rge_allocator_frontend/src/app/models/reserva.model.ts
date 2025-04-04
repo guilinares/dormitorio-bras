@@ -5,4 +5,11 @@ export interface Reserva {
     idade: string;
     tempoDeMinisterio: string;
     enfermidade: boolean;
+    alocado: boolean;
+    leito: Leito;
   }
+
+interface Leito {
+  numeroLeito: string;
+  dormitorio: string;
+}

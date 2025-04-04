@@ -3,10 +3,11 @@ import { ReservaService } from '../services/reserva.service';
 import { RouterModule } from '@angular/router'; // Importa RouterModule
 import { Reserva } from '../models/reserva.model';
 import { AlocarLeitoComponent } from '../alocar-leito/alocar-leito.component';
+import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
 
 @Component({
   selector: 'app-reservas',
-  imports: [RouterModule, AlocarLeitoComponent],
+  imports: [RouterModule, AlocarLeitoComponent, CabecalhoComponent],
   templateUrl: './reservas.component.html',
   styleUrl: './reservas.component.css'
 })
@@ -28,14 +29,15 @@ export class ReservasComponent {
   constructor(private reservaService: ReservaService) {}
 
   ngOnInit(): void {
-    this.carregarReservas();
+    this.carregarReservasSemLeito();
   }
 
-  carregarReservas() {
+  carregarReservasSemLeito() {
     this.reservaService.getReservas().subscribe(
       data => {
         console.log("Reservas recebidas:", data);
-        this.reservasRaw = data.data;
+        this.reservasRaw = data.data
+        this.reservasRaw = this.reservasRaw.filter(reserva => reserva.alocado == false);
         this.reservas = this.reservasRaw.sort((a, b) => a.nomeIrmao.localeCompare(b.nomeIrmao));
         console.log(this.reservasRaw[0]);
       },
@@ -115,8 +117,11 @@ export class ReservasComponent {
   
   onLeitoAlocado(alocado: boolean) {
     console.log(alocado)
-    if (alocado) {
-      this.carregarReservas();
-    }
+    setTimeout(() => {
+      if (alocado) {
+        this.isSelected = false;
+        this.carregarReservasSemLeito();
+      }
+    }, 1000);
   }
 }

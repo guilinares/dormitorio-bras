@@ -20,7 +20,7 @@ CREATE TABLE reservas_rge_raw (
     ministerio varchar(255),
     cidade varchar(255),
     data_nascimento date,
-    data_ordernacao date,
+    data_ordenacao date,
     enfermidade varchar(255),
     participa_reuniao_ministerio boolean,
     preside_regional boolean,

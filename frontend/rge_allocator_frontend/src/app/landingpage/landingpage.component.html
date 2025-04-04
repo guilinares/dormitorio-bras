@@ -6,27 +6,8 @@
     <title>Plataforma Angular</title>
 </head>
 <body class="main--container">
-    <header class="cabecalho">
-        <nav>
-            <img src="/ccb.png" class="logo">
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li>
-                    <div class="dropdown">
-                        <a href="#features">Recursos</a>
-                        <div class="dropdownmenu">
-                            <a [routerLink]="'/reservas'">Alocar Hóspede</a>
-                            <a href="#alocar_hospede">teste</a>
-                            <a href="#alocar_hospede">teste</a>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    
+    <app-cabecalho></app-cabecalho>
+
     <main class="container">
         <section id="home">
             <h1>Bem-vindo à Plataforma de Reservas do Dormitório Brás!</h1>

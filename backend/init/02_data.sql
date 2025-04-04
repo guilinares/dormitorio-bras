@@ -12,7 +12,7 @@ INSERT INTO dormitorio (dormitorio_id, nome, capacidade) VALUES
 
 -- Inserir os leitos para cada dormitório
 -- Central (Menor)
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('1', '1'), ('2', '1'), ('3', '1'), ('4', '1'), ('5', '1'),
   ('6', '1'), ('7', '1'), ('8', '1'), ('9', '1'), ('10', '1'),
   ('11', '1'), ('12', '1'), ('13', '1'), ('14', '1'), ('15', '1'),
@@ -21,7 +21,7 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('26', '1'), ('27', '1'), ('28', '1'), ('29', '1'), ('30', '1');
 
 -- Central (Maior)
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('31', '2'), ('32', '2'), ('33', '2'), ('34', '2'), ('35', '2'),
   ('36', '2'), ('37', '2'), ('38', '2'), ('39', '2'), ('40', '2'),
   ('41', '2'), ('42', '2'), ('43', '2'), ('44', '2'), ('45', '2'),
@@ -38,7 +38,7 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('96', '2'), ('97', '2');
 
 -- Salão de Jovens
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('98', '3'), ('99', '3'), ('100', '3'), ('101', '3'), ('102', '3'),
   ('103', '3'), ('104', '3'), ('105', '3'), ('106', '3'), ('107', '3'),
   ('108', '3'), ('109', '3'), ('110', '3'), ('111', '3'), ('112', '3'),
@@ -51,7 +51,7 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('143', '3'), ('144', '3');
 
 -- Ipanema I
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('145', '4'), ('146', '4'), ('147', '4'), ('148', '4'), ('149', '4'),
   ('150', '4'), ('151', '4'), ('152', '4'), ('153', '4'), ('154', '4'),
   ('155', '4'), ('156', '4'), ('157', '4'), ('158', '4'), ('159', '4'),
@@ -59,20 +59,20 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('165', '4'), ('166', '4');
 
 -- Ipanema II
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('167', '5'), ('168', '5'), ('169', '5'), ('170', '5'), ('171', '5'),
   ('172', '5'), ('173', '5'), ('174', '5'),
   ('295', '5'), ('296', '5'), ('297', '5'), ('298', '5'), ('299', '5'),
   ('300', '5'), ('301', '5');
 
 -- Ipanema III
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('175', '6'), ('176', '6'), ('177', '6'), ('178', '6'), ('179', '6'),
   ('180', '6'), ('181', '6'), ('182', '6'), ('183', '6'), ('184', '6'),
   ('185', '6'), ('186', '6'), ('187', '6'), ('188', '6'), ('189', '6');
 
 -- Visconde I
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('190', '7'), ('191', '7'), ('192', '7'), ('193', '7'), ('194', '7'),
   ('195', '7'), ('196', '7'), ('197', '7'), ('198', '7'), ('199', '7'),
   ('200', '7'), ('201', '7'), ('202', '7'), ('203', '7'), ('204', '7'),
@@ -81,7 +81,7 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('215', '7');
 
 -- Visconde II
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('216', '8'), ('217', '8'), ('218', '8'), ('219', '8'), ('220', '8'),
   ('221', '8'), ('222', '8'), ('223', '8'), ('224', '8'), ('225', '8'),
   ('226', '8'), ('227', '8'), ('228', '8'), ('229', '8'), ('230', '8'),
@@ -97,7 +97,7 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('276', '8'), ('277', '8'), ('278', '8');
 
 -- Visconde III
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('279', '9'), ('280', '9'), ('281', '9'), ('282', '9'), ('283', '9'),
   ('284', '9'), ('285', '9'), ('286', '9'), ('287', '9'), ('288', '9'),
   ('289', '9'), ('290', '9'), ('291', '9'), ('292', '9'), ('293', '9'),
@@ -106,6 +106,6 @@ INSERT INTO leito (numero_leito, dormitorio_id) VALUES
   ('317', '9'), ('318', '9');
 
 -- Enfermos
-INSERT INTO leito (numero_leito, dormitorio_id) VALUES
+INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('302', '10'), ('303', '10'), ('304', '10'), ('305', '10'),
   ('306', '10'), ('307', '10');
