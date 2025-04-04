@@ -16,7 +16,7 @@ resource "aws_vpc_ipv4_cidr_block_association" "awsec2app" {
 
 resource "aws_subnet" "awsec2app" {
   vpc_id = var.aws_vpc_id
-  cidr_block = "172.16.10.0/24"
+  cidr_block = "172.16.10.0/16"
   map_public_ip_on_launch = true
 
   tags = {
