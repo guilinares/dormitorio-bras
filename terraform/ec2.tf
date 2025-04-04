@@ -48,7 +48,7 @@ resource "aws_eip" "app_eip" {
 
 resource "aws_network_interface" "awsec2app" {
   subnet_id = aws_subnet.awsec2app.id
-  private_ips = ["172.16.10.100"]
+  private_ips = ["172.31.48.10"]
   security_groups = [aws_security_group.awsec2app.id]
   tags = {
     Name = "eni-app"
