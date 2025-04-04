@@ -49,12 +49,15 @@ services:
       - SPRING_DATASOURCE_PASSWORD=$DB_PASS
     depends_on:
       - postgres
+    networks:
+      - app-network
 
   frontend:
     image: guilinares/dormitorio-bras-frontend:latest
     container_name: dormitorio-bras-frontend
+    restart: always
     ports:
-      - "4200:4200"
+      - "4200:80"
     depends_on:
       - api
     networks:
