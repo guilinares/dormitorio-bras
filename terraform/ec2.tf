@@ -11,12 +11,12 @@ resource "random_pet" "sg" {}
 
 resource "aws_vpc_ipv4_cidr_block_association" "awsec2app" {
   vpc_id = var.aws_vpc_id
-  cidr_block = "172.16.0.0/16"
+  cidr_block = "172.31.0.0/20"
 }
 
 resource "aws_subnet" "awsec2app" {
   vpc_id = var.aws_vpc_id
-  cidr_block = "172.16.0.0/16"
+  cidr_block = "172.31.0.0/20"
   map_public_ip_on_launch = true
 
   tags = {
