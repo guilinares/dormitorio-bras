@@ -113,6 +113,7 @@ resource "aws_instance" "awsec2app" {
   user_data = data.template_file.user_data.rendered
   key_name      = var.key_name # Substitua pelo nome da sua chave SSH
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
+  availability_zone      = null
 
   tags = {
     Name = "app-instance"
