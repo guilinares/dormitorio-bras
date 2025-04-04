@@ -96,8 +96,15 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Construir a aplicação
+      - name: Construir a aplicação backend Java Spring
+        working-directory: ./backend
         run: mvn clean package
+
+      - name: Construir o frontend Angular
+        working-directory: ./frontend
+        run: |
+          npm install
+          npm run build -- --configuration=production
 
       - name: Criar imagem Docker do backend e enviar para Docker Hub
         run: |

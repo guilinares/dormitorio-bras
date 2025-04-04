@@ -1,7 +1,7 @@
 FROM node:20 AS build
 WORKDIR /app
 COPY . .
-RUN npm install && npm run build --configuration production
+RUN npm install && npm run build -- --configuration=production
 
 FROM nginx:alpine
 COPY --from=build /app/dist/<nome-do-projeto> /usr/share/nginx/html
