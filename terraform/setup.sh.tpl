@@ -56,7 +56,7 @@ services:
     ports:
       - "4200:4200"
     depends_on:
-      - backend
+      - api
     networks:
       - app-network
 
