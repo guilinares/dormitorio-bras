@@ -62,7 +62,7 @@ jobs:
         id: get-ip
         run: |
           IP=$(aws ec2 describe-instances \
-            --filters "Name=tag:Name,Values=issy-instance" "Name=instance-state-name,Values=running" \
+            --filters "Name=tag:Name,Values=app-instance" "Name=instance-state-name,Values=running" \
             --query "Reservations[*].Instances[*].PublicIpAddress" \
             --output text | head -n 1)
           echo "IP obtido: $IP"  # Debug: Verifique o IP retornado
