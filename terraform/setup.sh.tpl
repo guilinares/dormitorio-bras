@@ -2,6 +2,7 @@
 DB_USER=${db_user}
 DB_PASS=${db_pass}
 DB_NAME=${db_name}
+IP=${ip}
 
 # Atualizar pacotes
 sudo yum update -y && sudo yum upgrade -y
@@ -56,6 +57,8 @@ services:
     image: guilinares/dormitorio-bras-frontend:latest
     container_name: dormitorio-bras-frontend
     restart: always
+    environment:
+      - HOST_ADDRESS=$IP 
     ports:
       - "4200:80"
     depends_on:
