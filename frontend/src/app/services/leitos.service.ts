@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 import { EnvService } from './env.service';
 
 
@@ -16,7 +15,7 @@ export class LeitosService {
 
   codigoReserva: string = "";
   private apiUrl = '/leitos/disponiveis'; // URL da sua API
-  private apiUrlAloca = environment.apiUrl + '/reservas/';
+  private apiUrlAloca = '/reservas/';
 
 
   getLeitosDisponiveis(): Observable<any> {
