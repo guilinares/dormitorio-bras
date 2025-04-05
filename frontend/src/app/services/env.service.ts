@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EnvService {
-  public ip = 'http://' + (window as any).__env?.ip || '';
+  public ip = 'http://' + ((window as any).__env?.ip || '') + ':8080';
 }
