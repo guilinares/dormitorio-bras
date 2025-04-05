@@ -12,6 +12,7 @@ export class ReservaService {
   constructor(private http: HttpClient, private env: EnvService) { }
 
   getReservas(): Observable<any> {
+    console.log(this.env.ip + this.apiUrl);
     const headers = new HttpHeaders({
       'bypass-tunnel-reminder': 'bypass'
     });

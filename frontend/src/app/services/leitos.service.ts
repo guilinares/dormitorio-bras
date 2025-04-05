@@ -19,12 +19,14 @@ export class LeitosService {
 
 
   getLeitosDisponiveis(): Observable<any> {
+    console.log(this.env.ip + this.apiUrl);
     const headers = new HttpHeaders({
     });
     return this.http.get<any>(this.env.ip + this.apiUrl, {headers: headers});
   }
 
   postAlocaHospede(codigoReserva: string, body: {codigo_leito: string}): Observable<any> {
+    console.log(this.env.ip + this.apiUrl);
     const headers = new HttpHeaders({
       'bypass-tunnel-reminder': 'bypass'
     });
