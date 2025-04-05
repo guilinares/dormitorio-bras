@@ -20,3 +20,4 @@ variable "aws_igw_id" {
 variable "db_user" {}
 variable "db_pass" {}
 variable "db_name" {}
+variable "ip" {}
