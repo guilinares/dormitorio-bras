@@ -45,6 +45,10 @@ resource "aws_route_table_association" "app_route_assoc" {
 
 resource "aws_eip" "app_eip" {
   domain = "vpc"
+
+    lifecycle {
+        prevent_destroy = true
+    }
 }
 
 resource "aws_network_interface" "awsec2app" {
