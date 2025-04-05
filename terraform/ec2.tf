@@ -105,6 +105,7 @@ data "template_file" "user_data" {
     db_user = var.db_user
     db_pass = var.db_pass
     db_name = var.db_name
+    ip      = var.ip
   }
 }
 
