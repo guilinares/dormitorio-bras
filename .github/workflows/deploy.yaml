@@ -140,8 +140,8 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           debug: true
           script: |
-            mkdir -p ~/deploy/postgres/init
-            mkdir -p ~/deploy/logs
+            mkdir -p /home/ec2-user/api/deploy/postgres/init
+            mkdir -p /home/ec2-user/api/deploy/logs
 
             cp /home/ec2-user/api/01_init.sql /home/ec2-user/api/deploy/postgres/init/01_init.sql
             cp /home/ec2-user/api/02_data.sql /home/ec2-user/api/deploy/postgres/init/02_data.sql
