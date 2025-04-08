@@ -35,7 +35,7 @@ services:
       POSTGRES_DB: $DB_NAME
     volumes:
       - postgres_data:/var/lib/postgresql/data      
-      - ./postgres/init:/docker-entrypoint-initdb.d
+      - ./deploy/postgres/init:/docker-entrypoint-initdb.d
     networks:
       - app-network
 
