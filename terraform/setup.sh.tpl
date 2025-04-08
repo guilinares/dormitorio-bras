@@ -75,7 +75,7 @@ networks:
     driver: bridge
 EOL
 
-
+mkdir /deploy/postgres/init
 
 cat <<EOL > 01_init.sql
 CREATE TABLE dormitorio (
@@ -226,6 +226,10 @@ INSERT INTO leitos (numero_leito, dormitorio_id) VALUES
   ('302', '10'), ('303', '10'), ('304', '10'), ('305', '10'),
   ('306', '10'), ('307', '10');
 EOL
+
+cd ..
+cd ..
+cd ..
 
 # Iniciar os containers
 docker-compose up -d
