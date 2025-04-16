@@ -52,7 +52,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/$DB_NAME
       - SPRING_DATASOURCE_USERNAME=$DB_USER
       - SPRING_DATASOURCE_PASSWORD=$DB_PASS
-      - FIREBASE_CREDENTIALS_PATH: /app/credentials/firebase-credentials.json
+      - FIREBASE_CREDENTIALS_PATH=/app/credentials/firebase-credentials.json
     depends_on:
       - postgres
     networks:
