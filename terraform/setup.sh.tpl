@@ -36,11 +36,9 @@ services:
       POSTGRES_USER: $DB_USER
       POSTGRES_PASSWORD: $DB_PASS
       POSTGRES_DB: $DB_NAME
-      FIREBASE_CREDENTIALS_PATH: /app/credentials/firebase-credentials.json
     volumes:
       - postgres_data:/var/lib/postgresql/data      
       - ./deploy/postgres/init:/docker-entrypoint-initdb.d
-      - ./deploy/cred/firebase-adminsdk.json:/app/credentials/firebase-credentials.json:ro
     networks:
       - app-network
 
@@ -54,10 +52,14 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/$DB_NAME
       - SPRING_DATASOURCE_USERNAME=$DB_USER
       - SPRING_DATASOURCE_PASSWORD=$DB_PASS
+      - FIREBASE_CREDENTIALS_PATH: /app/credentials/firebase-credentials.json
     depends_on:
       - postgres
     networks:
       - app-network
+    volumes:
+    - ./deploy/cred/firebase-adminsdk.json:/app/credentials/firebase-credentials.json:ro
+
 
   frontend:
     image: guilinares/dormitorio-bras-frontend:latest
