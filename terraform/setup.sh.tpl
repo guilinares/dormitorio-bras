@@ -21,8 +21,8 @@ mkdir /home/ec2-user/api
 git clone https://github.com/guilinares/dormitorio-bras.git /home/ec2-user/api
 cd /home/ec2-user/api
 
-mkdir -p /home/ec2-user/cred
-aws s3 cp s3://dormitorio-rge-files/firebase-adminsdk.json /home/ec2-user/cred/firebase-adminsdk.json
+mkdir -p /home/ec2-user/api/deploy/cred
+aws s3 cp s3://dormitorio-rge-files/firebase-adminsdk.json /home/ec2-user/api/deploy/cred/firebase-adminsdk.json
 
 cat <<EOL > docker-compose.yml
 version: '3.8'
@@ -36,9 +36,11 @@ services:
       POSTGRES_USER: $DB_USER
       POSTGRES_PASSWORD: $DB_PASS
       POSTGRES_DB: $DB_NAME
+      FIREBASE_CREDENTIALS_PATH: /app/credentials/firebase-credentials.json
     volumes:
       - postgres_data:/var/lib/postgresql/data      
       - ./deploy/postgres/init:/docker-entrypoint-initdb.d
+      - ./deploy/cred/firebase-adminsdk.json:/app/credentials/firebase-credentials.json:ro
     networks:
       - app-network
 
