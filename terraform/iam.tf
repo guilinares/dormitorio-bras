@@ -24,7 +24,8 @@ resource "aws_iam_policy" "cloudwatch_policy" {
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents",
-        "logs:DescribeLogStreams"
+        "logs:DescribeLogStreams",
+        "s3:GetObject"
       ]
       Resource = "*"
     }]

@@ -21,6 +21,9 @@ mkdir /home/ec2-user/api
 git clone https://github.com/guilinares/dormitorio-bras.git /home/ec2-user/api
 cd /home/ec2-user/api
 
+mkdir -p /home/ec2-user/cred
+aws s3 cp s3://dormitorio-rge-files/firebase-adminsdk.json /home/ec2-user/cred/firebase-adminsdk.json
+
 cat <<EOL > docker-compose.yml
 version: '3.8'
 
