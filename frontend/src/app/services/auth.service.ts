@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import { BehaviorSubject } from 'rxjs';
+import { EnvService } from './env.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
 
   constructor(private auth: Auth) {
+    console.log(EnvService.apiKeyFirebase);
     onAuthStateChanged(this.auth, (user) => {
       this.userSubject.next(user);
     });
