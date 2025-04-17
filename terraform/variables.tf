@@ -21,4 +21,3 @@ variable "db_user" {}
 variable "db_pass" {}
 variable "db_name" {}
 variable "ip" {}
-variable "api_key_firebase" {}
