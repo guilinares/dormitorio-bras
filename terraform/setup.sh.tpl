@@ -3,7 +3,6 @@ DB_USER=${db_user}
 DB_PASS=${db_pass}
 DB_NAME=${db_name}
 IP=${ip}
-API_KEY_FIREBASE=${api_key_firebase}
 
 # Atualizar pacotes
 sudo yum update -y && sudo yum upgrade -y
