@@ -12,7 +12,6 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
 
   constructor(private auth: Auth) {
-    console.log(EnvService.apiKeyFirebase);
     onAuthStateChanged(this.auth, (user) => {
       this.userSubject.next(user);
     });

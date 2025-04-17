@@ -68,7 +68,6 @@ services:
     restart: always
     environment:
       - HOST_ADDRESS=$IP
-      - API_KEY_FIREBASE=$API_KEY_FIREBASE
     ports:
       - "4200:80"
     depends_on:

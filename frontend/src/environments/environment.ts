@@ -1,9 +1,7 @@
-import { EnvService } from "../app/services/env.service";
-
 export const environment = {
     production: false,
     firebase: {
-        apiKey: EnvService.apiKeyFirebase,
+        apiKey: "AIzaSyChFftovsEo0CwbcJPPdPmraNrSm3ia1Kk",
         authDomain: "dormitorio-bras.firebaseapp.com",
         projectId: "dormitorio-bras",
         storageBucket: "dormitorio-bras.firebasestorage.app",

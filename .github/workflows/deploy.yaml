@@ -36,8 +36,7 @@ jobs:
             -var="db_user=${{ secrets.DB_USER }}" \
             -var="db_pass=${{ secrets.DB_PASS }}" \
             -var="db_name=${{ secrets.DB_NAME }}" \
-            -var="ip=${{ secrets.IP }}" \
-            -var="api_key_firebase=${{ secrets.API_KEY_FIREBASE }}"
+            -var="ip=${{ secrets.IP }}"
         working-directory: terraform/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -49,8 +48,7 @@ jobs:
             -var="db_user=${{ secrets.DB_USER }}" \
             -var="db_pass=${{ secrets.DB_PASS }}" \
             -var="db_name=${{ secrets.DB_NAME }}" \
-            -var="ip=${{ secrets.IP }}" \
-            -var="api_key_firebase=${{ secrets.API_KEY_FIREBASE }}"
+            -var="ip=${{ secrets.IP }}" 
         working-directory: terraform/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
