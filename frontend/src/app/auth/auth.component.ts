@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { user } from '@angular/fire/auth';
+import { EnvService } from '../services/env.service';
 
 @Component({
   selector: 'app-auth',
@@ -23,6 +24,7 @@ export class AuthComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+    console.log(EnvService.apiKeyFirebase);
   }
 
   toggleMode() {
