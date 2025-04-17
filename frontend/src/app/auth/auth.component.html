@@ -1,0 +1,22 @@
+<div class="auth-container">
+    <h2>{{ isRegisterMode ? 'Cadastro' : 'Login' }}</h2>
+
+    <form [formGroup]="authForm" (ngSubmit)="submit()">
+        <input type="email" placeholder="E-mail" formControlName="email" />
+        <input type="password" placeholder="Senha" formControlName="password" />
+
+        @if (errorMessage) {
+        <div class="error">
+            {{ errorMessage }}
+        </div>
+        }
+
+        <button type="submit">
+            {{ isRegisterMode ? 'Cadastrar' : 'Entrar' }}
+        </button>
+    </form>
+
+    <button (click)="toggleMode()">
+        {{ isRegisterMode ? 'Já tem conta? Entrar' : 'Não tem conta? Cadastrar' }}
+    </button>
+</div>

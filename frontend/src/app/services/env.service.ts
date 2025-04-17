@@ -5,4 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class EnvService {
   public ip = 'http://' + ((window as any).__env?.ip || '') + ':8080';
+  public apiKeyFirebase = (window as any).__env?.apiKeyFirebase;
 }

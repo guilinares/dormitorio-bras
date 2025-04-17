@@ -3,6 +3,7 @@ DB_USER=${db_user}
 DB_PASS=${db_pass}
 DB_NAME=${db_name}
 IP=${ip}
+API_KEY_FIREBASE=${api_key_firebase}
 
 # Atualizar pacotes
 sudo yum update -y && sudo yum upgrade -y
@@ -66,7 +67,8 @@ services:
     container_name: dormitorio-bras-frontend
     restart: always
     environment:
-      - HOST_ADDRESS=$IP 
+      - HOST_ADDRESS=$IP
+      - API_KEY_FIREBASE=$API_KEY_FIREBASE
     ports:
       - "4200:80"
     depends_on:

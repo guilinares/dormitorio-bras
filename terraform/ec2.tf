@@ -110,6 +110,7 @@ data "template_file" "user_data" {
     db_pass = var.db_pass
     db_name = var.db_name
     ip      = var.ip
+    api_key_firebase = var.api_key_firebase
   }
 }
 
