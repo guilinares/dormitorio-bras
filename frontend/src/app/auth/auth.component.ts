@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../services/user.service';
-import { user } from '@angular/fire/auth';
+import { Auth, user } from '@angular/fire/auth';
 import { EnvService } from '../services/env.service';
+import { Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -19,12 +21,25 @@ export class AuthComponent {
   isRegisterMode = false;
   errorMessage = '';
 
+  private router = inject(Router);
+  private auth: Auth = inject(Auth);
+
+  isLoggedIn$: Observable<boolean> = user(this.auth).pipe(
+    map((firebaseUser) => !!firebaseUser)
+  );
+
   constructor(private fb: FormBuilder, private authService: AuthService, private userService: UserService) {
     this.authForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
     console.log(EnvService.apiKeyFirebase);
+  }
+
+  async ngOnInit(): Promise<void> {
+    if (await this.isLoggedIn$) {
+      this.router.navigate(['/landingpage']);
+    }
   }
 
   toggleMode() {
@@ -44,6 +59,8 @@ export class AuthComponent {
           const uid = userCredential.user.uid;
           sessionStorage.setItem("uid_user", uid);
           alert('Usuário cadastrado com sucesso!');
+          setTimeout(() => 1000);
+          this.router.navigate(['/landingpage']);
           return this.register(uid, email);
         })
         .catch(err => this.errorMessage = err.message);
@@ -57,6 +74,8 @@ export class AuthComponent {
           const token = await user.getIdToken();
           sessionStorage.setItem("token", token);
           alert('Login realizado com sucesso!');
+          setTimeout(() => 1000);
+          this.router.navigate(['/landingpage']);
           return this.getUserInfo();
         })
         .catch(err => this.errorMessage = err.message);

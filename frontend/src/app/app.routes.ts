@@ -5,13 +5,16 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { ConsultarReservasComponent } from './consultar-reservas/consultar-reservas.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './services/guard.service';
+import { AuthResolver } from './resolver/auth.resolver';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'landingpage', pathMatch: 'full' }, // Redireciona a página inicial para /landingpage
-    { path: 'landingpage', component: LandingpageComponent}, 
-    { path: 'reservas', component: ReservasComponent },
-    { path: 'alocar-leito', component: AlocarLeitoComponent},
-    { path: 'cabecalho', component: CabecalhoComponent},
-    { path: 'consultar-reservas', component: ConsultarReservasComponent},
-    { path: 'auth', component: AuthComponent}
+    { path: '', redirectTo: 'auth', pathMatch: 'full' }, // Redireciona a página inicial para /landingpage
+    { path: 'landingpage', component: LandingpageComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}}, 
+    { path: 'reservas', component: ReservasComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
+    { path: 'alocar-leito', component: AlocarLeitoComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
+    { path: 'cabecalho', component: CabecalhoComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
+    { path: 'consultar-reservas', component: ConsultarReservasComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
+    { path: 'auth', component: AuthComponent, resolve: { authReady: AuthResolver}},
+    { path: '*', redirectTo: 'auth', resolve: { authReady: AuthResolver}}
   ];

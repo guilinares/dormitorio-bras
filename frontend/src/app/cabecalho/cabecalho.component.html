@@ -1,6 +1,7 @@
 <header class="cabecalho">
+    <img src="/ccb.png" class="logo" />
+
     <nav>
-        <img src="/ccb.png" class="logo">
         <ul>
             <li><a href="#home">Início</a></li>
             <li>
@@ -17,4 +18,11 @@
             <li><a href="#contact">Contato</a></li>
         </ul>
     </nav>
+
+    <div class="contact">
+        <p *ngIf="userName$ | async as userName">
+            A paz de Deus, {{ userName }}!
+        </p>
+        <button class="logout-button" (click)="logout()">LogOut</button>
+    </div>
 </header>

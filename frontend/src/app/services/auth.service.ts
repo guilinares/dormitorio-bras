@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { EnvService } from './env.service';
 
 @Injectable({
@@ -10,6 +10,10 @@ import { EnvService } from './env.service';
 export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
+
+  readonly userName$: Observable<string | null> = this.user$.pipe(
+    map((firebaseUser) => firebaseUser?.displayName ?? firebaseUser?.email ?? null)
+  );
 
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
