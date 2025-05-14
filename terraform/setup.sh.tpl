@@ -25,25 +25,23 @@ fi
 
 # Montar o volume
 sudo mount /dev/xvdh /mnt/data
-
 # Adicionar ao fstab para montagem automática
 echo "/dev/xvdh /mnt/data ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
-
 # Criar diretório para dados do PostgreSQL e ajustar permissões
 sudo mkdir -p /mnt/data/postgres_data
 sudo chown -R 1000:1000 /mnt/data/postgres_data  # PostgreSQL roda como usuário 1000 no container
-sudo chmod -R 700 /mnt/data/postgres_data
+
+# 4. Baixar arquivos de configuração
+mkdir -p /home/ec2-user/api/deploy/cred
+mkdir -p /home/ec2-user/api/deploy/postgres/init
+
+aws s3 cp s3://dormitorio-rge-files/firebase-adminsdk.json /home/ec2-user/api/deploy/cred/firebase-adminsdk.json
+aws s3 cp s3://dormitorio-rge-files/01_init.sql /home/ec2-user/api/deploy/postgres/init/01_init.sql
+aws s3 cp s3://dormitorio-rge-files/02_data.sql /home/ec2-user/api/deploy/postgres/init/02_data.sql 
 
 # Clonar repositório e configurar aplicação
-mkdir /home/ec2-user/api
 git clone https://github.com/guilinares/dormitorio-bras.git /home/ec2-user/api
 cd /home/ec2-user/api
-
-mkdir -p /home/ec2-user/api/deploy/cred
-aws s3 cp s3://dormitorio-rge-files/firebase-adminsdk.json /home/ec2-user/api/deploy/cred/firebase-adminsdk.json
-mkdir -p /home/ec2-user/api/deploy/postgres
-aws s3 cp s3://dormitorio-rge-files/01_init.sql /home/ec2-user/api/deploy/postgres/init/01_init.sql
-aws s3 cp s3://dormitorio-rge-files/02_data.sql /home/ec2-user/api/deploy/postgres/init/02_init.sql
 
 cat <<EOL > docker-compose.yml
 version: '3.8'
@@ -99,7 +97,8 @@ networks:
     driver: bridge
 EOL
 
-# Criar diretórios de inicialização do PostgreSQL
-
 # Iniciar os containers
-docker-compose up -d
+docker-compose up -d --build
+
+sleep 30  # Aguardar inicialização
+docker ps -a
