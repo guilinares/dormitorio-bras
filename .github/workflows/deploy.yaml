@@ -140,12 +140,6 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           debug: true
           script: |
-            sudo mkdir -p /home/ec2-user/api/deploy/postgres/init
-            sudo mkdir -p /home/ec2-user/api/deploy/logs
-
-            sudo cp /home/ec2-user/api/01_init.sql /home/ec2-user/api/deploy/postgres/init/01_init.sql
-            sudo cp /home/ec2-user/api/02_data.sql /home/ec2-user/api/deploy/postgres/init/02_data.sql
-
             cd /home/ec2-user/api
             docker-compose down
             docker pull guilinares/dormitorio-bras-backend:latest

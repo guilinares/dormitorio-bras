@@ -42,8 +42,8 @@ cd /home/ec2-user/api
 mkdir -p /home/ec2-user/api/deploy/cred
 aws s3 cp s3://dormitorio-rge-files/firebase-adminsdk.json /home/ec2-user/api/deploy/cred/firebase-adminsdk.json
 mkdir -p /home/ec2-user/api/deploy/postgres
-aws s3 cp s3://dormitorio-rge-files/01_init.sql /home/ec2-user/api/deploy/postgres/01_init.sql
-aws s3 cp s3://dormitorio-rge-files/02_data.sql /home/ec2-user/api/deploy/postgres/02_init.sql
+aws s3 cp s3://dormitorio-rge-files/01_init.sql /home/ec2-user/api/deploy/postgres/init/01_init.sql
+aws s3 cp s3://dormitorio-rge-files/02_data.sql /home/ec2-user/api/deploy/postgres/init/02_init.sql
 
 cat <<EOL > docker-compose.yml
 version: '3.8'
