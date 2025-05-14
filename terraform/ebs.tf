@@ -1,5 +1,6 @@
 resource "aws_ebs_volume" "data_volume" {
   availability_zone = "sa-east-1a"
+  size = 5
   type              = "gp3"
 }
 
