@@ -1,0 +1,49 @@
+<body class="main--container">
+    <app-cabecalho></app-cabecalho>
+    <div class="container">
+        <h2>Cadastro de Hóspedes</h2>
+        <form [formGroup]="hospedeForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input id="nome" type="text" formControlName="nome" />
+            <div class="error" *ngIf="hospedeForm.get('nome')?.invalid && hospedeForm.get('nome')?.touched">
+              Nome é obrigatório e deve ter no mínimo 3 caracteres.
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" />
+            <div class="error" *ngIf="hospedeForm.get('email')?.invalid && hospedeForm.get('email')?.touched">
+              Insira um email válido.
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" type="text" formControlName="telefone" />
+            <div class="error" *ngIf="hospedeForm.get('telefone')?.invalid && hospedeForm.get('telefone')?.touched">
+              Telefone deve ter entre 10 e 11 dígitos.
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input id="dataNascimento" type="date" formControlName="dataNascimento" />
+            <div class="error" *ngIf="hospedeForm.get('dataNascimento')?.invalid && hospedeForm.get('dataNascimento')?.touched">
+              Data de Nascimento é obrigatória.
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="documento">Documento de Identidade</label>
+            <input id="documento" type="text" formControlName="documento" />
+            <div class="error" *ngIf="hospedeForm.get('documento')?.invalid && hospedeForm.get('documento')?.touched">
+              Documento é obrigatório e deve ter no mínimo 5 caracteres.
+            </div>
+          </div>
+      
+          <button type="submit" [disabled]="hospedeForm.invalid">Cadastrar</button>
+        </form>
+      </div>
+</body>

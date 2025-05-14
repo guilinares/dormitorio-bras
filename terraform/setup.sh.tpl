@@ -16,6 +16,14 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+# Montar o volume EBS
+sudo mkdir -p /mnt/data
+sudo mkfs -t ext4 /dev/xvdh
+sudo mount /dev/xvdh /mnt/data
+
+# Adicionar ao fstab para montagem automática
+echo "/dev/xvdh /mnt/data ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
+
 # Clonar repositório e configurar aplicação
 mkdir /home/ec2-user/api
 git clone https://github.com/guilinares/dormitorio-bras.git /home/ec2-user/api
@@ -37,7 +45,7 @@ services:
       POSTGRES_PASSWORD: $DB_PASS
       POSTGRES_DB: $DB_NAME
     volumes:
-      - postgres_data:/var/lib/postgresql/data      
+      - /mnt/data/postgres_data:/var/lib/postgresql/data      
       - ./deploy/postgres/init:/docker-entrypoint-initdb.d
     networks:
       - app-network
