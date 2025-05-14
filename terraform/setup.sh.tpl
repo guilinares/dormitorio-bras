@@ -29,7 +29,7 @@ sudo mount /dev/xvdh /mnt/data
 echo "/dev/xvdh /mnt/data ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
 # Criar diretório para dados do PostgreSQL e ajustar permissões
 sudo mkdir -p /mnt/data/postgres_data
-sudo chown -R 1000:1000 /mnt/data/postgres_data  # PostgreSQL roda como usuário 1000 no container
+sudo chown -R 999:999 /mnt/data/postgres_data  # PostgreSQL roda como usuário 1000 no container
 
 # 4. Baixar arquivos de configuração
 mkdir -p /home/ec2-user/api/deploy/cred
