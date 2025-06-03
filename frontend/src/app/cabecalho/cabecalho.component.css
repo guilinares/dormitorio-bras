@@ -17,15 +17,18 @@ body {
     color: white;
     height: 13vh;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
-  }
+}
 
 .logo {
-    max-height: 100%;        /* nunca ultrapassa a altura do cabeçalho */
-    width: auto;             /* mantém a proporção da imagem */
-    object-fit: contain;     /* garante que não deforme */
+    max-height: 100%;
+    /* nunca ultrapassa a altura do cabeçalho */
+    width: auto;
+    /* mantém a proporção da imagem */
+    object-fit: contain;
+    /* garante que não deforme */
     margin-left: 5vw;
     margin-right: 5vw;
-  }
+}
 
 nav {
     display: flex;
@@ -75,7 +78,7 @@ nav ul li a:hover {
 
 .logout-button:hover {
     background-color: #1e3e68;
-  }
+}
 
 .dropdown {
     position: relative;
@@ -88,12 +91,12 @@ nav ul li a:hover {
     background-color: #E3E1D9;
     list-style: none;
     min-width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 
 .dropdownmenu a {
-    color: #325883 !important; 
+    color: #325883 !important;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -104,7 +107,7 @@ nav ul li a:hover {
     color: #E3E1D9 !important;
 }
 
-.dropdown:hover .dropdownmenu{
+.dropdown:hover .dropdownmenu {
     display: block;
 }
 
@@ -123,5 +126,60 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
-    z-index: 1000; /* Garante que o footer fique acima de outros conteúdos */
+    z-index: 1000;
+    /* Garante que o footer fique acima de outros conteúdos */
+}
+
+@media (max-width: 768px) {
+    .cabecalho {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .logo {
+        max-height: 60px;
+        margin: 0 auto 10px auto;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .contact {
+        margin: 10px 0 0 0;
+        align-items: center;
+    }
+
+    .logout-button {
+        width: 80%;
+        margin: 10px auto 0 auto;
+    }
+
+    .dropdownmenu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .dropdown:hover .dropdownmenu {
+        display: block;
+    }
+
+    .container {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
 }

@@ -6,11 +6,19 @@
             <li><a href="#home">Início</a></li>
             <li>
                 <div class="dropdown">
-                    <a href="#features">Recursos</a>
+                    <a href="#features">Hospedes</a>
+                    <div class="dropdownmenu">
+                        <a [routerLink]="'/consultar-hospedes'">Consultar Hospedes</a>
+                        <a [routerLink]="'/cadastrar-hospede'">Cadastrar Hospede</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a [routerLink]="'/leitos'">Leitos</a>
                     <div class="dropdownmenu">
                         <a [routerLink]="'/reservas'">Alocar Hóspede</a>
                         <a [routerLink]="'/consultar-reservas'">Consultar Reservas</a>
-                        <a [routerLink]="'/cadastrar-hospede'">Cadastrar Hospede</a>
                     </div>
                 </div>
             </li>

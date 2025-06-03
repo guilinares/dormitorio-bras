@@ -1,0 +1,13 @@
+<body class="main--container">
+    <app-cabecalho></app-cabecalho>
+    <div class="container">
+        <h2 class="leitos-titulo">Visão geral dos leitos</h2>
+        <div class="leitos">
+            @for (leito of leitos; track leito) {
+            <div class="leito-card" [class.ocupado]="leito.ocupado">
+                <p>{{leito.codigoLeito}}</p>
+            </div>
+            }
+        </div>
+    </div>
+</body>

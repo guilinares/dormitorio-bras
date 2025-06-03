@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 90vw;
+    margin: 5vh auto;
+    padding: 20px;
+    background-color: #e3e1d9;
+    border: 2px solid #c2c1ba;
+    border-radius: 8px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.leitos {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.leito-card {
+    width: 3vw;
+    padding: 0.5vh;
+    margin: 3px;
+    border: 1px solid black;
+    justify-items: center;
+}
+
+.leitos-titulo {
+    margin-bottom: 15px;
+}
+
+.leito-card.ocupado {
+    background-color: rgba(252, 40, 40, 0.825);
+}
+
+.dormitorio {
+    max-width: 85vw;
+}
+
+.dormitorio-image {
+    max-width: 85vw;
+}
+
+
+

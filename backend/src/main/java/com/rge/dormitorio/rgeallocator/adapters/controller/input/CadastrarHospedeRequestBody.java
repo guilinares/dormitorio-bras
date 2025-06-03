@@ -14,8 +14,11 @@ public class CadastrarHospedeRequestBody {
 
     private String nome;
     private String dataNascimento;
-    private String cpf;
     private String cargoMinisterio;
+    private String dataOrdenacao;
+    private String presideRegional;
+    private String cidade;
+    private String uf;
     private String comumCongregacao;
     private String email;
     private String telefone;

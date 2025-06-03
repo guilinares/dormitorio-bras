@@ -3,47 +3,136 @@
     <div class="container">
         <h2>Cadastro de Hóspedes</h2>
         <form [formGroup]="hospedeForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="nome">Nome Completo</label>
-            <input id="nome" type="text" formControlName="nome" />
-            <div class="error" *ngIf="hospedeForm.get('nome')?.invalid && hospedeForm.get('nome')?.touched">
-              Nome é obrigatório e deve ter no mínimo 3 caracteres.
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input id="nome" type="text" formControlName="nome" />
+                <div class="error" *ngIf="hospedeForm.get('nome')?.invalid && hospedeForm.get('nome')?.touched">
+                    Nome é obrigatório e deve ter no mínimo 3 caracteres.
+                </div>
             </div>
-          </div>
-      
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" formControlName="email" />
-            <div class="error" *ngIf="hospedeForm.get('email')?.invalid && hospedeForm.get('email')?.touched">
-              Insira um email válido.
+
+            <div class="form-group">
+                <label for="dataNascimento">Data de Nascimento</label>
+                <input id="dataNascimento" type="date" formControlName="dataNascimento" />
+                <div class="error"
+                    *ngIf="hospedeForm.get('dataNascimento')?.invalid && hospedeForm.get('dataNascimento')?.touched">
+                    Data de Nascimento é obrigatória.
+                </div>
             </div>
-          </div>
-      
-          <div class="form-group">
-            <label for="telefone">Telefone</label>
-            <input id="telefone" type="text" formControlName="telefone" />
-            <div class="error" *ngIf="hospedeForm.get('telefone')?.invalid && hospedeForm.get('telefone')?.touched">
-              Telefone deve ter entre 10 e 11 dígitos.
+
+            <div class="form-group">
+                <label for="cargoMinisterio">Cargo ou Ministério</label>
+                <select id="cargoMinisterio" formControlName="cargoMinisterio">
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="Ancião">Ancião</option>
+                    <option value="Diácono">Diácono</option>
+                    <option value="Cooperador do Ofício">Cooperador do Ofício</option>
+                    <option value="Cooperador de Jovens">Cooperador de Jovens</option>
+                    <option value="Motorista">Motorista</option>
+                    <option value="Administração">Administração</option>
+                    <option value="Voluntário">Voluntário</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <div class="error"
+                    *ngIf="hospedeForm.get('cargoMinisterio')?.invalid && hospedeForm.get('cargoMinisterio')?.touched">
+                    O cargo ou Ministério é obrigatório.
+                </div>
             </div>
-          </div>
-      
-          <div class="form-group">
-            <label for="dataNascimento">Data de Nascimento</label>
-            <input id="dataNascimento" type="date" formControlName="dataNascimento" />
-            <div class="error" *ngIf="hospedeForm.get('dataNascimento')?.invalid && hospedeForm.get('dataNascimento')?.touched">
-              Data de Nascimento é obrigatória.
+            <div class="container-ministerio"
+                *ngIf="isIrmaoMinisterio()">
+                <div class="form-group">
+                    <label for="dataOrdenacao">Data de Ordenação</label>
+                    <input id="dataOrdenacao" type="date" formControlName="dataOrdenacao" />
+                    <div class="error"
+                        *ngIf="hospedeForm.get('dataOrdenacao')?.invalid && hospedeForm.get('dataOrdenacao')?.touched">
+                        Data de Ordenação é obrigatória.
+                    </div>
+                    <!-- Mensagem de erro -->
+                    <div class="error"
+                        *ngIf="hospedeForm.get('dataOrdenacao')?.invalid && (hospedeForm.get('dataOrdenacao')?.touched || hospedeForm.get('dataOrdenacao')?.dirty)">
+                        Campo obrigatório.
+                    </div>
+                </div>
+                <div class="form-group"
+                    *ngIf="hospedeForm.get('cargoMinisterio')?.value == 'Ancião'">
+                    <label class="radio-label">Preside regional?</label>
+                    <div>
+                        <label>
+                            <input type="radio" formControlName="presideRegional" value="true"
+                                (click)="hospedeForm.get('presideRegional')?.markAsTouched()" class="radio-input">
+                                <span class="radio-custom"></span> Sim
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="presideRegional" value="false"
+                                (click)="hospedeForm.get('presideRegional')?.markAsTouched()" class="radio-input">
+                                <span class="radio-custom"></span> Não
+                        </label>
+                    </div>
+                    <!-- Mensagem de erro -->
+                    <div class="error"
+                        *ngIf="hospedeForm.get('presideRegional')?.invalid && (hospedeForm.get('presideRegional')?.touched || hospedeForm.get('presideRegional')?.dirty)">
+                        Campo obrigatório.
+                    </div>
+                </div>
             </div>
-          </div>
-      
-          <div class="form-group">
-            <label for="documento">Documento de Identidade</label>
-            <input id="documento" type="text" formControlName="documento" />
-            <div class="error" *ngIf="hospedeForm.get('documento')?.invalid && hospedeForm.get('documento')?.touched">
-              Documento é obrigatório e deve ter no mínimo 5 caracteres.
+
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input id="cidade" type="text" formControlName="cidade" />
+                <div class="error"
+                    *ngIf="hospedeForm.get('cidade')?.invalid && hospedeForm.get('cidade')?.touched">
+                    A cidade de residência é obrigatória.
+                </div>
             </div>
-          </div>
-      
-          <button type="submit" [disabled]="hospedeForm.invalid">Cadastrar</button>
+
+            <div class="form-group">
+                <label for="uf">UF</label>
+                <input id="uf" type="text" formControlName="uf" />
+                <div class="error"
+                    *ngIf="hospedeForm.get('uf')?.invalid && hospedeForm.get('uf')?.touched">
+                    A UF de residência é obrigatória.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comumCongregacao">Comum Congregação</label>
+                <input id="comumCongregacao" type="text" formControlName="comumCongregacao" />
+                <div class="error"
+                    *ngIf="hospedeForm.get('comumCongregacao')?.invalid && hospedeForm.get('comumCongregacao')?.touched">
+                    O cargo ou Ministério é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" formControlName="email" />
+                <div class="error" *ngIf="hospedeForm.get('email')?.invalid && hospedeForm.get('email')?.touched">
+                    Insira um email válido.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input id="telefone" type="text" formControlName="telefone" />
+                <div class="error" *ngIf="hospedeForm.get('telefone')?.invalid && hospedeForm.get('telefone')?.touched">
+                    Telefone deve ter entre 10 e 11 dígitos.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <select id="sexo" formControlName="sexo">
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+                <div class="error" *ngIf="hospedeForm.get('sexo')?.invalid && hospedeForm.get('sexo')?.touched">
+                    Sexo deve ser informado.
+                </div>
+            </div>
+
+
+            <button type="submit" [disabled]="hospedeForm.invalid">Cadastrar</button>
         </form>
-      </div>
+    </div>
 </body>

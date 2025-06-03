@@ -23,8 +23,12 @@ public class CadastrarHospede {
             hospedeEntity.setTelefone(input.getTelefone());
             hospedeEntity.setDataNascimento(input.getDataNascimento());
             hospedeEntity.setCargoMinisterio(input.getCargoMinisterio());
+            hospedeEntity.setDataOrdenacao(input.getDataOrdenacao());
+            hospedeEntity.setPresideRegional(Boolean.valueOf(input.getPresideRegional()));
+            hospedeEntity.setCidade(input.getCidade());
+            hospedeEntity.setUf(input.getUf());
             hospedeEntity.setComumCongregacao(input.getComumCongregacao());
-            hospedeEntity.setCpf(input.getCpf());
+            hospedeEntity.setSexo(input.getSexo());
             hospedesRepository.save(hospedeEntity);
         } catch (Exception e) {
             throw e;

@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 90vw;
+    margin: 5vh auto;
+    padding: 20px;
+    background-color: #e3e1d9;
+    border: 2px solid #c2c1ba;
+    border-radius: 8px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cards--container {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centraliza os cards em telas menores */
+}
+
+.hospede-card {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+    /* Tamanho fixo razoável para mobile */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hospede-card-info {
+    /* Pode adicionar estilos aqui depois */
+}
+
+.hospede-card-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-around;
+}
+
+.hospede-card-buttons button {
+    width: 100px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse (em telas desktop) */
+.hospede-card-buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.325);
+}
+
+.delete-button {
+    background-color: rgb(250, 178, 178);
+}
+
+.edit-button {
+    background-color: rgb(247, 247, 173);
+}
+
+.detail-button {
+    background-color: rgb(205, 205, 252);
+}
+
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.031);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* ===== Responsividade para telas menores ===== */
+@media (max-width: 600px) {
+    .cards--container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hospede-card {
+        width: 90%;
+    }
+
+    .hospede-card-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hospede-card-buttons button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}

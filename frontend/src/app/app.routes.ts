@@ -8,6 +8,8 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './services/guard.service';
 import { AuthResolver } from './resolver/auth.resolver';
 import { CadastrarHospedeComponent } from './cadastrar-hospede/cadastrar-hospede.component';
+import { ConsultarHospedesComponent } from './consultar-hospedes/consultar-hospedes.component';
+import { LeitosLandingpageComponent } from './leitos-landingpage/leitos-landingpage.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'auth', pathMatch: 'full' }, // Redireciona a página inicial para /landingpage
@@ -17,6 +19,8 @@ export const routes: Routes = [
     { path: 'cabecalho', component: CabecalhoComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
     { path: 'consultar-reservas', component: ConsultarReservasComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
     { path: 'cadastrar-hospede', component: CadastrarHospedeComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
+    { path: 'consultar-hospedes', component: ConsultarHospedesComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
+    { path: 'leitos', component: LeitosLandingpageComponent, canActivate: [AuthGuard], resolve: { authReady: AuthResolver}},
     { path: 'auth', component: AuthComponent, resolve: { authReady: AuthResolver}},
     { path: '*', redirectTo: 'auth', resolve: { authReady: AuthResolver}}
   ];

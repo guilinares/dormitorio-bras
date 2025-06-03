@@ -1,8 +1,6 @@
 package com.rge.dormitorio.rgeallocator.adapters.database.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -16,9 +14,6 @@ public class HospedeEntity {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "cpf")
-    private String cpf;
-
     @Column(name = "email")
     private String email;
 
@@ -31,6 +26,25 @@ public class HospedeEntity {
     @Column(name = "cargo_ministerio")
     private String cargoMinisterio;
 
+    @Column(name = "data_ordenacao")
+    private String dataOrdenacao;
+
+    @Column(name = "preside_regional")
+    private Boolean presideRegional;
+
+    @Column(name = "cidade")
+    private String cidade;
+
+    @Column(name = "uf")
+    private String uf;
+
     @Column(name = "comum_congregacao")
     private String comumCongregacao;
+
+    @Column(name = "sexo")
+    private String sexo;
+
+    @OneToOne
+    @JoinColumn(name = "numero_leito")
+    private LeitosEntity leito;
 }
