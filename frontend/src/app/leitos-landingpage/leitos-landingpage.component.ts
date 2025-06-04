@@ -12,7 +12,7 @@ import { Leito } from '../models/leito.model';
 export class LeitosLandingpageComponent {
 
   leitos: Leito[] = []
-  hospedesAlocados: 
+  // hospedesAlocados: 
 
   constructor(private leitoService: LeitosService) {}
 
