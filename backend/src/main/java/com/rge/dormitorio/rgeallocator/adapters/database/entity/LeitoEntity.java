@@ -5,19 +5,19 @@ import lombok.Data;
 
 @Data
 @Entity(name = "leitos")
-public class LeitosEntity {
+public class LeitoEntity {
 
     @Id
     @Column(name = "numero_leito")
     private String numeroLeito;
+
+    @Column(name = "ocupado")
+    private Boolean ocupado;
 
     @ManyToOne
     @JoinColumn(name = "dormitorio_id", nullable = false)
     private DormitoriosEntity dormitorio;
 
     @OneToOne(mappedBy = "leito", cascade = CascadeType.ALL)
-    private ReservasEntity reserva;
-
-    @Column(name = "ocupado")
-    private boolean ocupado;
+    private ReservaEntity reserva;
 }

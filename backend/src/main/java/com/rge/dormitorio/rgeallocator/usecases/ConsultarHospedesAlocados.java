@@ -1,5 +1,6 @@
 package com.rge.dormitorio.rgeallocator.usecases;
 
+import com.rge.dormitorio.rgeallocator.adapters.controller.output.ConsultaHospedeAlocadoResponse;
 import com.rge.dormitorio.rgeallocator.adapters.controller.output.ConsultaHospedeResponse;
 import com.rge.dormitorio.rgeallocator.adapters.controller.output.ConsultaHospedesData;
 import com.rge.dormitorio.rgeallocator.adapters.database.entity.HospedeEntity;
@@ -13,18 +14,20 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ConsultarTodosHospedes {
+public class ConsultarHospedesAlocados {
 
     private final HospedesRepository hospedesRepository;
 
     public ConsultaHospedesData execute() {
         try {
             List<HospedeEntity> hospedeEntityList = hospedesRepository.findAll();
-            if (hospedeEntityList.isEmpty()) return null;
+            List<HospedeEntity> hospedeEntityComReservaList = hospedeEntityList
+                    .stream().filter(hospede -> hospede.getReserva() != null).toList();
+            if (hospedeEntityComReservaList.isEmpty()) return null;
             List<ConsultaHospedeResponse> hospedes = new ArrayList<>();
-            for (var hospedeEntity : hospedeEntityList) {
+            for (var hospedeEntity : hospedeEntityComReservaList) {
                 Hospede hospede = new Hospede(hospedeEntity);
-                hospedes.add(ConsultaHospedeResponse.builder()
+                ConsultaHospedeAlocadoResponse hospedeAlocado = ConsultaHospedeAlocadoResponse.builder()
                         .hospedeId(hospedeEntity.getHospedeId())
                         .nome(hospede.getNome())
                         .idade(hospede.getIdade())
@@ -32,7 +35,10 @@ public class ConsultarTodosHospedes {
                         .uf(hospede.getUf())
                         .cargoMinisterio(hospede.getCargoMinisterio())
                         .tempoOrdenacao(hospede.getTempoOrdenacao())
-                        .build());
+                        .leitoId(hospedeEntity.getReserva().getLeito().getNumeroLeito())
+                        .dormitorio(hospedeEntity.getReserva().getLeito().getDormitorio().getNome())
+                        .build();
+                hospedes.add(hospedeAlocado);
             }
             return ConsultaHospedesData.builder()
                     .data(hospedes)

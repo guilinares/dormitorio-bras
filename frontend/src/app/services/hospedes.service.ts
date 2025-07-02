@@ -36,6 +36,18 @@ export class HospedesService {
     return this.http.get<any>(this.env.ip + this.apiUrl, {headers: headers});
   }
 
+  getHospedesAlocado(): Observable<any> {
+    const headers = new HttpHeaders({
+    });
+    return this.http.get<any>(this.env.ip + this.apiUrl + "?estado=ALOCADO", {headers: headers});
+  }
+
+  getHospedesDesalocados(): Observable<any> {
+    const headers = new HttpHeaders({
+    });
+    return this.http.get<any>(this.env.ip + this.apiUrl + "?estado=DESALOCADO", {headers: headers});
+  }
+
   deleteHospede(hospedeId: string): Observable<any> {
     const headers = new HttpHeaders({
     });

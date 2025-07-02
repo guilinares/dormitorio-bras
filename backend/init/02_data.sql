@@ -1,33 +1,33 @@
 -- Inserir dormitórios se não existirem
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '1', 'Central (Menor)', 30 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '1');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '1', 'Central (Menor)', 30 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '1');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '2', 'Central (Maior)', 67 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '2');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '2', 'Central (Maior)', 67 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '2');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '3', 'Salão de Jovens', 47 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '3');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '3', 'Salão de Jovens', 47 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '3');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '4', 'Ipanema I', 22 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '4');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '4', 'Ipanema I', 22 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '4');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '5', 'Ipanema II', 15 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '5');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '5', 'Ipanema II', 15 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '5');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '6', 'Ipanema III', 15 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '6');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '6', 'Ipanema III', 15 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '6');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '7', 'Visconde I', 26 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '7');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '7', 'Visconde I', 26 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '7');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '8', 'Visconde II', 61 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '8');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '8', 'Visconde II', 61 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '8');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '9', 'Visconde III', 27 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '9');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '9', 'Visconde III', 27 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '9');
 
-INSERT INTO dormitorio (dormitorio_id, nome, capacidade)
-SELECT '10', 'Enfermos', 6 WHERE NOT EXISTS (SELECT 1 FROM dormitorio WHERE dormitorio_id = '10');
+INSERT INTO dormitorios (dormitorio_id, nome, capacidade)
+SELECT '10', 'Enfermos', 6 WHERE NOT EXISTS (SELECT 1 FROM dormitorios WHERE dormitorio_id = '10');
 
 -- Inserir todos os leitos (1-318) com verificação
 -- Central (Menor) - Leitos 1-30

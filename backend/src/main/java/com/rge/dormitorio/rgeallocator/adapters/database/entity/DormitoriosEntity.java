@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@Entity(name = "dormitorio")
+@Entity(name = "dormitorios")
 public class DormitoriosEntity {
 
     @Id
@@ -26,5 +26,5 @@ public class DormitoriosEntity {
     private Integer capacidade;
 
     @OneToMany(mappedBy = "dormitorio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<LeitosEntity> leitos;
+    private List<LeitoEntity> leitos;
 }

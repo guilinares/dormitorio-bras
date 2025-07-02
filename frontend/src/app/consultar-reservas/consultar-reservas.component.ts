@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
-import { ReservaService } from '../services/reserva.service';
-import { Reserva } from '../models/reserva.model';
+import { HospedesService } from '../services/hospedes.service';
+import { HospedeSimplificado } from '../models/hospede.model';
 
 @Component({
   selector: 'app-consultar-reservas',
@@ -12,23 +12,22 @@ import { Reserva } from '../models/reserva.model';
 })
 export class ConsultarReservasComponent {
 
-  reservasRaw: Reserva[] = [];
-  reservas: Reserva[] = [];
+  hospedesRaw: HospedeSimplificado[] = [];
+  hospedes: HospedeSimplificado[] = [];
 
-  constructor(private reservaService: ReservaService) {}
+  constructor(private hospedesService: HospedesService) {}
 
   ngOnInit(): void {
     this.carregarReservasAlocadas();
   }
 
   carregarReservasAlocadas() {
-    this.reservaService.getReservas().subscribe(
+    this.hospedesService.getHospedesAlocado().subscribe(
       data => {
         console.log("Reservas recebidas:", data);
-        this.reservasRaw = data.data
-        this.reservasRaw = this.reservasRaw.filter(reserva => reserva.alocado == true);
-        this.reservas = this.reservasRaw.sort((a, b) => a.nomeIrmao.localeCompare(b.nomeIrmao));
-        console.log(this.reservasRaw[0]);
+        this.hospedesRaw = data.data
+        this.hospedes = this.hospedesRaw.sort((a, b) => a.nome.localeCompare(b.nome));
+        console.log(this.hospedesRaw[0]);
       },
       error => {
         console.error("Erro ao buscar reservas:", error);

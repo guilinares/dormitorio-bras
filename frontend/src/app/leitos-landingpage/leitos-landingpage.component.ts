@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
 import { LeitosService } from '../services/leitos.service';
 import { Leito } from '../models/leito.model';
+import { HospedesService } from '../services/hospedes.service';
+import { HospedeSimplificado } from '../models/hospede.model';
 
 @Component({
   selector: 'app-leitos-landingpage',
@@ -12,12 +14,14 @@ import { Leito } from '../models/leito.model';
 export class LeitosLandingpageComponent {
 
   leitos: Leito[] = []
+  hospedesAlocados: HospedeSimplificado[] = [];
   // hospedesAlocados: 
 
-  constructor(private leitoService: LeitosService) {}
+  constructor(private leitoService: LeitosService, private hospedeService: HospedesService) {}
 
   ngOnInit() {
     this.carregarLeitos();
+    this.carregarHospedesAlocados();
   }
 
   carregarLeitos() {
@@ -29,5 +33,17 @@ export class LeitosLandingpageComponent {
       error => {
         console.error("Erro ao buscar reservas:", error);
     });
+  }
+
+  carregarHospedesAlocados() {
+    this.hospedeService.getHospedesAlocado().subscribe(
+      data => {
+        this.hospedesAlocados = data.data
+        this.hospedesAlocados = this.hospedesAlocados.sort((a, b) => parseInt(a.leitoId) - parseInt(b.leitoId))
+      },
+      error => {
+        console.error("Erro ao buscar hospedes alocados:", error);
+      }
+    ) 
   }
 }

@@ -44,7 +44,6 @@ public class HospedeEntity {
     @Column(name = "sexo")
     private String sexo;
 
-    @OneToOne
-    @JoinColumn(name = "numero_leito")
-    private LeitosEntity leito;
+    @OneToOne(mappedBy = "hospede")
+    private ReservaEntity reserva;
 }

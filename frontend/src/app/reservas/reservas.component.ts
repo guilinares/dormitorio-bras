@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ReservaService } from '../services/reserva.service';
+import { HospedesService } from '../services/hospedes.service';
 import { RouterModule } from '@angular/router'; // Importa RouterModule
-import { Reserva } from '../models/reserva.model';
+import { HospedeSimplificado } from '../models/hospede.model';
 import { AlocarLeitoComponent } from '../alocar-leito/alocar-leito.component';
 import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
 
@@ -14,10 +14,10 @@ import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
 export class ReservasComponent {
   @ViewChild(AlocarLeitoComponent) modal!: AlocarLeitoComponent;
 
-  reservasRaw: Reserva[] = [];
-  reservas: Reserva[] = [];
+  hospedesRaw: HospedeSimplificado[] = [];
+  hospedes: HospedeSimplificado[] = [];
   filtrosAtivos: string[] = []; // Armazena a ordem dos filtros aplicados
-  reservasOriginal: any[] = []; // Guarda a lista original
+  hospedesOriginal: any[] = []; // Guarda a lista original
   isSelected: boolean = false;
   selectedReserva: string = "";
   parametroOrdenacao: string = "letra";
@@ -26,20 +26,19 @@ export class ReservasComponent {
   isOrdenadoTempoMinisterio: boolean = false;
   isOrdenadoEnfermidade: boolean = false;
   
-  constructor(private reservaService: ReservaService) {}
+  constructor(private hospedesService: HospedesService) {}
 
   ngOnInit(): void {
-    this.carregarReservasSemLeito();
+    this.carregarHospedesSemLeito();
   }
 
-  carregarReservasSemLeito() {
-    this.reservaService.getReservas().subscribe(
+  carregarHospedesSemLeito() {
+    this.hospedesService.getHospedesDesalocados().subscribe(
       data => {
         console.log("Reservas recebidas:", data);
-        this.reservasRaw = data.data
-        this.reservasRaw = this.reservasRaw.filter(reserva => reserva.alocado == false);
-        this.reservas = this.reservasRaw.sort((a, b) => a.nomeIrmao.localeCompare(b.nomeIrmao));
-        console.log(this.reservasRaw[0]);
+        this.hospedesRaw = data.data
+        this.hospedes = this.hospedesRaw.sort((a, b) => a.nome.localeCompare(b.nome));
+        console.log(this.hospedesRaw[0]);
       },
       error => {
         console.error("Erro ao buscar reservas:", error);
@@ -55,8 +54,8 @@ export class ReservasComponent {
   }
 
   ordenar(parametro: string) {
-    if (this.reservasOriginal.length === 0) {
-      this.reservasOriginal = [...this.reservas];
+    if (this.hospedesOriginal.length === 0) {
+      this.hospedesOriginal = [...this.hospedes];
     }
   
     const index = this.filtrosAtivos.indexOf(parametro);
@@ -81,12 +80,12 @@ export class ReservasComponent {
   
   aplicarFiltros() {
     if (this.filtrosAtivos.length === 0) {
-      this.reservas = [...this.reservasOriginal]; // Sem filtros, volta ao original
+      this.hospedes = [...this.hospedesOriginal]; // Sem filtros, volta ao original
       return;
     }
   
     // Ordenação sequencial por todos os critérios ativos
-    this.reservas = [...this.reservasOriginal].sort((a, b) => {
+    this.hospedes = [...this.hospedesOriginal].sort((a, b) => {
       for (const filtro of this.filtrosAtivos) {
         let resultado = 0;
   
@@ -95,7 +94,7 @@ export class ReservasComponent {
           this.isOrdenadoIdade = true;
         } 
         else if (filtro === "tdm") {
-          resultado = parseInt(b.tempoDeMinisterio) - parseInt(a.tempoDeMinisterio);
+          resultado = parseInt(b.tempoOrdenacao) - parseInt(a.tempoOrdenacao);
           this.isOrdenadoTempoMinisterio = true;
         } 
         else if (filtro === "enfermidade") {
@@ -120,7 +119,7 @@ export class ReservasComponent {
     setTimeout(() => {
       if (alocado) {
         this.isSelected = false;
-        this.carregarReservasSemLeito();
+        this.carregarHospedesSemLeito();
       }
     }, 1000);
   }

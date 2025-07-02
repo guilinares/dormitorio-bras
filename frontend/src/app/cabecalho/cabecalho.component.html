@@ -1,36 +1,39 @@
 <header class="cabecalho">
-    <img src="/ccb.png" class="logo" />
+    <div class="cabecalho-container">
+        <a href="#home" class="logo-link">
+            <img src="/ccb.png" alt="Logo CCB" class="logo" />
+        </a>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Início</a></li>
-            <li>
-                <div class="dropdown">
-                    <a href="#features">Hospedes</a>
-                    <div class="dropdownmenu">
-                        <a [routerLink]="'/consultar-hospedes'">Consultar Hospedes</a>
-                        <a [routerLink]="'/cadastrar-hospede'">Cadastrar Hospede</a>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="dropdown">
-                    <a [routerLink]="'/leitos'">Leitos</a>
-                    <div class="dropdownmenu">
-                        <a [routerLink]="'/reservas'">Alocar Hóspede</a>
-                        <a [routerLink]="'/consultar-reservas'">Consultar Reservas</a>
-                    </div>
-                </div>
-            </li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#contact">Contato</a></li>
-        </ul>
-    </nav>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
 
-    <div class="contact">
-        <p *ngIf="userName$ | async as userName">
-            A paz de Deus, {{ userName }}!
-        </p>
-        <button class="logout-button" (click)="logout()">LogOut</button>
+        <nav class="nav-principal" aria-label="Navegação principal">
+            <ul class="nav-lista">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li class="nav-item-dropdown">
+                    <button class="dropdown-toggle" aria-expanded="false">Hóspedes</button>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="'/consultar-hospedes'" class="dropdown-link">Consultar Hóspedes</a></li>
+                        <li><a [routerLink]="'/cadastrar-hospede'" class="dropdown-link">Cadastrar Hóspede</a></li>
+                        <li><a [routerLink]="'/reservas'" class="dropdown-link">Alocar Hóspede</a></li>
+                    </ul>
+                </li>
+                <li><a [routerLink]="'/leitos'" class="nav-link">Leitos</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="user-area">
+            <p *ngIf="userName$ | async as userName" class="user-greeting">
+                A paz de Deus, <span class="user-name">{{ userName }}</span>!
+            </p>
+            <button class="logout-button" (click)="logout()" aria-label="Sair da conta">
+                <span class="logout-icon"></span>
+                Sair
+            </button>
+        </div>
     </div>
 </header>

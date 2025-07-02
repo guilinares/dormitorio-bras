@@ -2,7 +2,7 @@ package com.rge.dormitorio.rgeallocator.usecases;
 
 import com.rge.dormitorio.rgeallocator.adapters.controller.output.LeitosResponseData;
 import com.rge.dormitorio.rgeallocator.adapters.controller.output.LeitosResponseData.LeitoResponse;
-import com.rge.dormitorio.rgeallocator.adapters.database.entity.LeitosEntity;
+import com.rge.dormitorio.rgeallocator.adapters.database.entity.LeitoEntity;
 import com.rge.dormitorio.rgeallocator.adapters.database.repository.LeitosRepository;
 import com.rge.dormitorio.rgeallocator.domain.Leito;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class ListarLeitosDisponiveis {
 
     public LeitosResponseData execute() {
         List<LeitoResponse> leitosResponse = new ArrayList<>();
-        List<LeitosEntity> leitosEntities = leitosRepository.findAllDisponiveis();
+        List<LeitoEntity> leitosEntities = leitosRepository.findAllDisponiveis();
         if (leitosEntities.isEmpty()) return null;
         for (var leitoEntity : leitosEntities) {
             Leito leito = new Leito(leitoEntity);

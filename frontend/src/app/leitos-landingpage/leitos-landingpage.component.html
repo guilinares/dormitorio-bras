@@ -9,5 +9,16 @@
             </div>
             }
         </div>
+        <div class="hospedes-alocados">
+            @for (hospedeAlocado of hospedesAlocados; track hospedeAlocado) {
+                <div class="hospede-inline">
+                    <p><strong>{{ hospedeAlocado.leitoId }}</strong></p>
+                    <p>{{ hospedeAlocado.dormitorio }}</p>
+                    <p>{{ hospedeAlocado.nome }}</p>
+                    <p>{{ hospedeAlocado.cargoMinisterio }}</p>
+                    <p>{{ hospedeAlocado.cargoMinisterio }}</p>
+                </div>
+            }
+        </div>
     </div>
 </body>

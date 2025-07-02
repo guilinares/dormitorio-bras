@@ -52,13 +52,13 @@ body {
 .reserva-card {
     width: 320px;
     height: auto;
-    background-color: #E3E1D9;
+    background-color: var(--cor-container);
     margin: 7px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
-    border: 2px solid #d8d4c8;
+    border: 2px solid var(--cor-container);
     border-radius: 10px;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease-in-out, height 0.5s ease-in-out;
@@ -73,8 +73,8 @@ body {
 }
 
 .reserva-card.unselected {
-    background-color: #e3e1d9;
-    border-color: #e3e1d9;
+    background-color: var(--cor-container);
+    border-color: var(--cor-container);
 }
 
 .reserva-card:hover {

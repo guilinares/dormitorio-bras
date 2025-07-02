@@ -1,5 +1,5 @@
 .auth-container {
-  background-color: #F2EFE5;
+  background-color: var(--cor-container);
   padding: 40px;
   margin: 15vh auto;
   width: 400px;

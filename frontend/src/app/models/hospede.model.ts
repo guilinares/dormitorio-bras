@@ -6,4 +6,6 @@ export interface HospedeSimplificado {
     uf: string
     cargoMinisterio: string
     tempoOrdenacao: string
+    leitoId: string
+    dormitorio: string
 }

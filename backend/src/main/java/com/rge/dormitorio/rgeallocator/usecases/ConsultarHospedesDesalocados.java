@@ -13,16 +13,18 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ConsultarTodosHospedes {
+public class ConsultarHospedesDesalocados {
 
     private final HospedesRepository hospedesRepository;
 
     public ConsultaHospedesData execute() {
         try {
             List<HospedeEntity> hospedeEntityList = hospedesRepository.findAll();
-            if (hospedeEntityList.isEmpty()) return null;
+            List<HospedeEntity> hospedeEntitySemLeitoList = hospedeEntityList
+                    .stream().filter(hospede -> hospede.getReserva() == null).toList();
+            if (hospedeEntitySemLeitoList.isEmpty()) return null;
             List<ConsultaHospedeResponse> hospedes = new ArrayList<>();
-            for (var hospedeEntity : hospedeEntityList) {
+            for (var hospedeEntity : hospedeEntitySemLeitoList) {
                 Hospede hospede = new Hospede(hospedeEntity);
                 hospedes.add(ConsultaHospedeResponse.builder()
                         .hospedeId(hospedeEntity.getHospedeId())

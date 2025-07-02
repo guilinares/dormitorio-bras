@@ -13,11 +13,11 @@
             <h1><strong>Reservas Efetuadas: </strong></h1>
         </div>
         <div class="listagem-cards">
-            @for (reserva of reservas; track reserva) {
+            @for (hospede of hospedes; track hospede) {
                 <div class="checkbox-div">
                     <div class="reserva-card">
-                        <p><strong>{{ reserva.nomeIrmao}}</strong></p>
-                        <p>{{ reserva.leito.numeroLeito }} - {{ reserva.leito.dormitorio }}</p>
+                        <p><strong>{{ hospede.nome}}</strong></p>
+                        <p>{{ hospede.leitoId }}</p>
                     </div>
                 </div>
             }

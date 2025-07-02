@@ -1,12 +1,15 @@
 package com.rge.dormitorio.rgeallocator.adapters.controller;
 
 import com.rge.dormitorio.rgeallocator.adapters.controller.input.CadastrarHospedeRequestBody;
-import com.rge.dormitorio.rgeallocator.usecases.CadastrarHospede;
-import com.rge.dormitorio.rgeallocator.usecases.ConsultarTodosHospedes;
-import com.rge.dormitorio.rgeallocator.usecases.DeletarHospede;
+import com.rge.dormitorio.rgeallocator.adapters.controller.output.ConsultaHospedesData;
+import com.rge.dormitorio.rgeallocator.domain.enums.EstadoHospedeEnum;
+import com.rge.dormitorio.rgeallocator.usecases.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static com.rge.dormitorio.rgeallocator.domain.enums.EstadoHospedeEnum.ALOCADO;
+import static com.rge.dormitorio.rgeallocator.domain.enums.EstadoHospedeEnum.DESALOCADO;
 
 @RestController
 @RequestMapping("/hospedes")
@@ -15,6 +18,8 @@ public class HospedesController {
 
     private final CadastrarHospede cadastrarHospede;
     private final ConsultarTodosHospedes consultarTodosHospedes;
+    private final ConsultarHospedesDesalocados consultarHospedesDesalocados;
+    private final ConsultarHospedesAlocados consultarHospedesAlocados;
     private final DeletarHospede deletarHospede;
 
     @CrossOrigin("*")
@@ -32,9 +37,18 @@ public class HospedesController {
 
     @CrossOrigin("*")
     @GetMapping
-    private ResponseEntity<Object> consultarTodosHospedes() {
+    private ResponseEntity<Object> consultarHospedes(
+            @RequestParam(required = false, name = "estado") EstadoHospedeEnum estado
+    ) {
         try {
-            var response = consultarTodosHospedes.execute();
+            ConsultaHospedesData response;
+            if (DESALOCADO.equals(estado)) {
+                response = consultarHospedesDesalocados.execute();
+            } else if (ALOCADO.equals(estado)) {
+                response = consultarHospedesAlocados.execute();
+            } else {
+                response = consultarTodosHospedes.execute();
+            }
             if (response == null) return ResponseEntity.noContent().build();
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {

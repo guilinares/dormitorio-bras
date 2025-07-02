@@ -3,11 +3,11 @@
     
     <main class="container">
         <div class="container-acoes">
-            <h1> Hospedes sem leito alocado: </h1>
+            <h1> Hospedes sem reserva: </h1>
             @if (isSelected) {
-                <button class="alocate-button" [class.selected]="isSelected" (click)="abrirModal()">Alocar leito</button>
+                <button class="alocate-button" [class.selected]="isSelected" (click)="abrirModal()">Reservar</button>
             } @else {
-                <button class="alocate-button" [class.unselected]="isSelected" disabled>Alocar leito</button>
+                <button class="alocate-button" [class.unselected]="isSelected" disabled>Reservar</button>
             }
         </div>
         <div class="container-filtros">
@@ -17,23 +17,23 @@
         </div>
         <section class="consulta-box">
             <div class="listagem-cards">
-                @for (reserva of reservas; track reserva) {
-                <div class="checkbox-div" (click)="toggleSelection(reserva.codigoReserva)">
-                    @if (selectedReserva == reserva.codigoReserva) {
+                @for (hospede of hospedes; track hospede) {
+                <div class="checkbox-div" (click)="toggleSelection(hospede.hospedeId)">
+                    @if (selectedReserva == hospede.hospedeId) {
                     <div [class.selected]="isSelected" class="reserva-card">
-                        <p class="reserva-info"><strong>{{ reserva.nomeIrmao}}</strong></p>
-                        <p class="reserva-info">{{ reserva.ministerio}}</p>
-                        <p class="reserva-info">Idade: {{ reserva.idade }} anos</p>
-                        <p class="reserva-info">Tempo de ministério: {{ reserva.tempoDeMinisterio }} anos</p>
-                        <p class="reserva-info">Possui enfermidade?: {{ reserva.enfermidade == true ? 'Sim' : 'Não' }}</p>
+                        <p class="reserva-info"><strong>{{ hospede.nome}}</strong></p>
+                        <p class="reserva-info">{{ hospede.cargoMinisterio}}</p>
+                        <p class="reserva-info">Idade: {{ hospede.idade }} anos</p>
+                        <p class="reserva-info">Tempo de ministério: {{ hospede.tempoOrdenacao }} anos</p>
+                        <!-- <p class="reserva-info">Possui enfermidade?: {{ hospede.nome == true ? 'Sim' : 'Não' }}</p> -->
                     </div>
                     } @else {
                     <div [class.unselected]="isSelected" class="reserva-card">
-                        <p class="reserva-info"><strong>{{ reserva.nomeIrmao}}</strong></p>
-                        <p class="reserva-info">{{ reserva.ministerio}}</p>
-                        <p class="reserva-info">Idade: {{ reserva.idade }} anos</p>
-                        <p class="reserva-info">Tempo de ministério: {{ reserva.tempoDeMinisterio }} anos</p>
-                        <p class="reserva-info">Possui enfermidade?: {{ reserva.enfermidade == true ? 'Sim' : 'Não' }}</p>
+                        <p class="reserva-info"><strong>{{ hospede.nome}}</strong></p>
+                        <p class="reserva-info">{{ hospede.cargoMinisterio}}</p>
+                        <p class="reserva-info">Idade: {{ hospede.idade }} anos</p>
+                        <p class="reserva-info">Tempo de ministério: {{ hospede.tempoOrdenacao }} anos</p>
+                        <!-- <p class="reserva-info">Possui enfermidade?: {{ hospede.nome == true ? 'Sim' : 'Não' }}</p> -->
                     </div>
                     }
                 </div>        

@@ -18,3 +18,14 @@ body, html {
 body.modal-open {
     overflow: hidden; /* Impede o scroll da página */
 }
+
+:root {
+  --cor-primaria: #325883 !important;
+  --cor-secundaria: #1e3e68 !important;
+  --cor-fundo: #2c3e50 !important;
+  --cor-texto: #ecf0f1 !important;
+  --cor-texto-escuro: #2c3e50 !important;
+  --cor-hover: #3498db !important;
+  --cor-dropdown: #ecf0f1 !important;
+  --cor-container: #c7caca !important;
+}

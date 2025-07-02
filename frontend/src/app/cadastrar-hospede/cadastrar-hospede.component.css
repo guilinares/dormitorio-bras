@@ -12,8 +12,8 @@ body {
     max-width: 600px;
     margin: 5vh auto;
     padding: 20px;
-    background-color: #e3e1d9;
-    border: 2px solid #c2c1ba;
+    background-color: var(--cor-container);
+    border: 2px solid var(--cor-container);
     border-radius: 8px;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
 }
